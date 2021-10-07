@@ -17,6 +17,13 @@ app som gør det muligt at finde en pølsevogn i nærheden af hvor man er.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Using docker
+
+To run as docker container
+```
+docker run -it -p 3000:3000 -v $(pwd)/:/src [imageid]
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
