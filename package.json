@@ -1,27 +1,20 @@
 {
-  "name": "src",
-  "version": "1.0.0",
-  "description": "Projektet handler om at lære nogle nye teknologier og til det, laver jeg denne app som gør det muligt at finde en pølsevogn i nærheden af hvor man er.",
-  "main": "index.js",
-  "dependencies": {
-    "next": "^11.1.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
-  },
-  "devDependencies": {
-    "prettier": "^2.4.1"
-  },
+  "name": "cafe-fodkold",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
-  "repository": {
-    "type": "git",
-    "url": ""
+  "dependencies": {
+    "next": "11.1.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
   },
-  "author": "",
-  "license": "ISC"
+  "devDependencies": {
+    "eslint": "7.32.0",
+    "eslint-config-next": "11.1.2"
+  }
 }
