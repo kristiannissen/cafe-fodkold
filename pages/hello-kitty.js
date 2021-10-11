@@ -1,3 +1,10 @@
+import Header from "./components/header";
+import Head from 'next/head'
+
 export default function HelloKitty() {
-    return <h1>Hello Kitty</h1>
+    return <div>
+      <Head>
+      <title>Hello</title>
+    </Head>
+    <Header title="Hello Kitty" /></div>
 }
