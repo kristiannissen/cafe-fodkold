@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 
 export async function getStaticProps(context) {
   const res = await fetch(`${process.env.HOST}/api/sausage-stands`);
@@ -20,7 +21,7 @@ export default function Home({ stands }) {
       <main>
         <ul>
           {stands.map((stand) => (
-            <li key={stand.uid}>{stand.name}</li>
+            <li key={stand.uid}><Link href="/">{stand.name}</Link></li>
           ))}
         </ul>
       </main>
