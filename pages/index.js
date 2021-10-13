@@ -1,15 +1,35 @@
 import Head from "next/head";
 import Link from "next/link";
-
-export default function Home({ stands }) {
+import Toolbar from "./components/toolbar";
+// TODO: https://nextjs.org/docs/api-reference/next/router#router-object
+const Home = ({ stands }) => {
   return (
-    <div>
+    <>
       <Head>
         <title>Cafe Fodkold</title>
       </Head>
       <main>
-        <p>Hello Kitty</p>  
+        <ul>
+          {stands.map((stand) => <li key={stand.uid}><Link href={{
+            pathname: "/stand/[id]",
+              query: {id: stand.uid},
+          }}>{stand.name}</Link></li>)}
+    </ul>
+      <Toolbar />
     </main>
-    </div>
+    </>
   );
 }
+
+export const getStaticProps = async (context) => {
+  const req = await fetch(`${process.env.HOST}/api/sausage-stands`)
+  const res = await req.json()
+
+  return {
+    props: {
+      stands: res.stands
+    }
+  }
+}
+
+export default Home;
