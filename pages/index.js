@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import Toolbar from "./components/toolbar";
+import styles from "../styles/List.module.css";
 
 const Home = ({ stands }) => {
   return (
@@ -9,20 +10,17 @@ const Home = ({ stands }) => {
         <title>Cafe Fodkold</title>
       </Head>
       <main>
-        <ul>
+        <div className={styles.list}>
           {stands.map((stand) => (
-            <li key={stand.uid}>
-              <Link
-                href={{
-                  pathname: "/stand/[id]",
-                  query: { id: stand.uid },
-                }}
-              >
-                {stand.name}
-              </Link>
-            </li>
+            <div className={styles.list_item} key={stand.uid}>
+              <div className={styles.list_item__title}>
+                <i className={styles.list_item__icon__place}></i>
+                <Link href={`/stand/${stand.uid}`}>{stand.name}</Link>
+              </div>
+              <div className={styles.list_item__content}>Hello Pussy</div>
+            </div>
           ))}
-        </ul>
+        </div>
         <Toolbar />
       </main>
     </>
