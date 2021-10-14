@@ -1,7 +1,7 @@
 /**
  *
  */
-import styles from "../../styles/Toolbar.module.css"
+import styles from "../../styles/Toolbar.module.css";
 
 const Toolbar = () => {
   return (
