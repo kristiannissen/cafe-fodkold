@@ -1,11 +1,21 @@
 /* Stand.module.css */
 .container {
-    display: flex;
-    box-shadow: 0 0 0.75rem 0 #bfbfbf;
-    height: 64px;
-    align-items: center;
+  display: flex;
+  box-shadow: 0 0 0.75rem 0 #bfbfbf;
+  height: 64px;
+  align-items: center;
 }
 .svg {
-    cursor: hand;
-    margin: 16px 16px;
+  cursor: hand;
+  margin: 16px 16px;
+}
+.row {
+  display: grid;
+  grid-template-columns: [first] 10% [line2] 90% [end];
+  width: 100vw;
+  grid-template-rows: 64px;
+}
+.row .column:first-of-type {
+}
+.row .column:last-of-type {
 }

@@ -18,8 +18,9 @@ a {
 main {
   width: 100vw;
   display: flex;
+  flex-wrap: wrap;
 }
 h1 {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
