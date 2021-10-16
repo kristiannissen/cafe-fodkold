@@ -10,12 +10,7 @@
   height: 64px;
   border-bottom: 1px solid #bfbfbf;
   padding: 16px;
-}
-.list_item__icon__place {
-  width: 24px;
-  height: 24px;
-  display: block;
-  background-image: url("/assets/svg/place_black_24dp.svg");
+  align-items: center;
 }
 .list_item:first-of-type {
 }
@@ -23,12 +18,14 @@
   border-bottom: none;
 }
 .list_item__title {
+  width: 20%;
+}
+.list_item__title a {
   font-weight: 600;
+  position: relative;
+  left: 24px;
 }
 .list_item__content {
   display: flex;
   gap: 8px;
-}
-.place {
-  background-image: url("/assets/svg/place_black_24dp.svg");
 }

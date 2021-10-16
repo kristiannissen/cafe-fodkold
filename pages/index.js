@@ -14,7 +14,7 @@ const Home = ({ stands }) => {
           {stands.map((stand) => (
             <div className={styles.list_item} key={stand.uid}>
               <div className={styles.list_item__title}>
-                <i className={styles.list_item__icon__place}></i>
+                <i className="icon place"></i>
                 <Link href={`/stand/${stand.uid}`}>{stand.name}</Link>
               </div>
               <div className={styles.list_item__content}>Hello Pussy</div>
