@@ -6,7 +6,6 @@
 }
 .list_item {
   display: flex;
-  gap: 8px 16px;
   height: 64px;
   border-bottom: 1px solid #bfbfbf;
   padding: 16px;
@@ -18,7 +17,6 @@
   border-bottom: none;
 }
 .list_item__title {
-  width: 20%;
 }
 .list_item__title a {
   font-weight: 600;
@@ -26,6 +24,9 @@
   left: 24px;
 }
 .list_item__content {
-  display: flex;
-  gap: 8px;
+}
+@media only screen and (min-width: 320px) {
+  .list_item {
+    justify-content: space-between;
+  }
 }
