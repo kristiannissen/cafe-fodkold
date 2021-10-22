@@ -5,11 +5,11 @@
   position: fixed;
   bottom: 10px;
   padding: 5px;
-}
-.button {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+}
+.button {
 }
 .label {
   font-weight: bolder;

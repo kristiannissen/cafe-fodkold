@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { AppWrapper } from "./context";
 
 import "../styles/globals.css";
 
@@ -13,7 +14,9 @@ function MyApp({ Component, pageProps }) {
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
         />
       </Head>
-      <Component {...pageProps} />
+      <AppWrapper>
+        <Component {...pageProps} />
+      </AppWrapper>
     </>
   );
 }
