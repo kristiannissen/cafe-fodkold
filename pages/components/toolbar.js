@@ -1,24 +1,20 @@
 /**
  *
  */
-import { useAppContext } from "../context";
-import { useState } from "react";
+// import { useAppContext } from "../context";
+// import { useState } from "react";
 
 import styles from "../../styles/Toolbar.module.css";
 
 const Toolbar = () => {
   // const {state} = useAppContext
-  const [user, setLocation] = useState({});
+  // const [user, setLocation] = useState({});
 
   const getUserLocation = () => {
     if (navigator.getlocation) {
       navigator.geolocation.getCurrentPosition(
         (pos) => {
-          user = {
-            lat: pos.coords.latitude,
-            lng: pos.coords.longigude,
-          };
-          setLocation(user);
+          alert(pos)
         },
         () => alert("Go find yourself")
       );
