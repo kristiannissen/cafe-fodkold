@@ -1,14 +1,9 @@
 /**
  *
  */
-// import { useAppContext } from "../context";
-// import { useState } from "react";
-
 import styles from "../../styles/Toolbar.module.css";
 
 const Toolbar = () => {
-  // const {state} = useAppContext
-  // const [user, setLocation] = useState({});
 
   const getUserLocation = () => {
     if (navigator.getlocation) {
