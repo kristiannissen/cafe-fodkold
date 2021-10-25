@@ -20,9 +20,6 @@ const Toolbar = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.button}>
-        <span className={styles.label}><i className="icon explore"></i></span>
-      </div>
       <div className={styles.button} onClick={getUserLocation}>
         <span className={styles.label}><i className="icon my_location"></i></span>
       </div>
