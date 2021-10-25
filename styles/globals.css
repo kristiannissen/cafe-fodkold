@@ -1,7 +1,22 @@
+:root {
+    --color_dark: #292929;
+    --color_900: #015457;
+    --color_800: #027374;
+    --color_700: #038785;
+    --color_600: #049592;
+    --color_500: #06A299;
+    --color_400: #08B3A6;
+    --color_300: #0AC4B4;
+    --color_200: #0DDAC5;
+    --color_100: #70EFDE;
+    --color_50: #C8FFF4;
+}
 html,
 body {
   padding: 0;
-  margin: 0;
+  background-color: var(--color_dark);
+  color: var(--color_50);
+  margin: 0 auto;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
@@ -14,9 +29,7 @@ a {
 * {
   box-sizing: border-box;
 }
-
 main {
-  padding: 8px 16px;
 }
 h1 {
   margin: 0;
@@ -37,5 +50,9 @@ h1 {
 }
 .my_location {
   background-image: url("/assets/svg/my_location_black_24dp.svg");
+  background-repeat: no-repeat;
+}
+.arrow {
+  background-image: url("/assets/svg/arrow_back_black_24dp.svg");
   background-repeat: no-repeat;
 }

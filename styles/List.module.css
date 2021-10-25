@@ -1,7 +1,6 @@
 /* List.module.css */
 .list {
-  border: 1px solid #bfbfbf;
-  border-radius: 8px;
+    background-color: var(--color_900);
 }
 .list_item {
   display: flex;
