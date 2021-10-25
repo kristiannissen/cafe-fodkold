@@ -6,7 +6,7 @@ import Head from "next/head";
 
 import "../styles/globals.css";
 
-function MyApp({ Component, pageProps }) {
+const MyApp = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
@@ -17,9 +17,9 @@ function MyApp({ Component, pageProps }) {
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
         />
       </Head>
-        <Component {...pageProps} />
+      <Component {...pageProps} />
     </>
   );
-}
+};
 
 export default MyApp;

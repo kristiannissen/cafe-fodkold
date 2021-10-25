@@ -1,10 +1,19 @@
+/**
+ * @file index.js
+ *
+ */
 import Head from "next/head";
 import Link from "next/link";
 import Toolbar from "./components/toolbar";
 import styles from "../styles/List.module.css";
+import {useState, useEffect} from "react";
 
 const Home = ({ stands }) => {
-  return (
+    const [coords, setCoords] = useState({lat: "", lng: ""});
+
+    useEffect(() => console.log("Coords", coords), [coords])
+
+    return (
     <>
       <Head>
         <title>Cafe Fodkold</title>
@@ -21,7 +30,7 @@ const Home = ({ stands }) => {
             </div>
           ))}
         </div>
-        <Toolbar />
+        <Toolbar setCoords={setCoords} />
       </main>
     </>
   );

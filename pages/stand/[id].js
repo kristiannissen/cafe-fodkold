@@ -18,7 +18,7 @@ const Stand = () => {
       </Head>
       <header className={styles.header}>
         <span onClick={() => router.push("/")}>
-            <i className="icon arrow"></i>
+          <i className="icon arrow"></i>
         </span>
         <h1>Pølsebaren</h1>
       </header>
