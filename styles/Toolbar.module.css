@@ -4,13 +4,15 @@
   border-radius: 4px;
   position: fixed;
   bottom: 10px;
-  padding: 5px;
+  padding: 8px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  min-width: calc(100vw - 32px);
 }
 .button {
 }
 .label {
   font-weight: bolder;
+  cursor: pointer;
 }

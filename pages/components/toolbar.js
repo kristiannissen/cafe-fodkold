@@ -1,20 +1,20 @@
 /**
  *
  */
+import {useState} from "react";
 import styles from "../../styles/Toolbar.module.css";
 
 const Toolbar = () => {
+    const initUser = {lat: "", lng: ""}
+    const [user, setLocation] = useState(initUser)
 
   const getUserLocation = () => {
-    if (navigator.getlocation) {
-      navigator.geolocation.getCurrentPosition(
-        (pos) => {
-          alert(pos)
-        },
-        () => alert("Go find yourself")
-      );
-    } else {
-      alert("Not supported in your browser");
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition((p) => {
+            user.lat = p.coords.latitude;
+            user.lng = p.coords.longitude;
+            setLocation(user)
+        })
     }
   };
 
