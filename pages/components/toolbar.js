@@ -1,5 +1,5 @@
 /**
- *
+ * @file pages/components/toolbar.js
  */
 import styles from "../../styles/Toolbar.module.css";
 
