@@ -25,10 +25,17 @@ h1 {
 .icon {
   width: 24px;
   height: 24px;
-  display: block;
-  position: absolute;
+  display: inline-block;
 }
 .place {
   background-image: url("/assets/svg/place_black_24dp.svg");
+  background-repeat: no-repeat;
+}
+.explore {
+  background-image: url("/assets/svg/explore_black_24dp.svg");
+  background-repeat: no-repeat;
+}
+.my_location {
+  background-image: url("/assets/svg/my_location_black_24dp.svg");
   background-repeat: no-repeat;
 }

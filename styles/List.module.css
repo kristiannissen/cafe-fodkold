@@ -17,11 +17,11 @@
   border-bottom: none;
 }
 .list_item__title {
+    display: flex;
+    align-items: center;
 }
 .list_item__title a {
   font-weight: 600;
-  position: relative;
-  left: 24px;
 }
 .list_item__content {
 }
