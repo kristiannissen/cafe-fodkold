@@ -8,10 +8,19 @@ import Toolbar from "./components/toolbar";
 import styles from "../styles/List.module.css";
 import {useState, useEffect} from "react";
 
-const Home = ({ stands }) => {
+const Home = () => {
     const [coords, setCoords] = useState({lat: "", lng: ""});
+    const [stands, setStands] = useState([]);
 
-    useEffect(() => console.log("Coords", coords), [coords])
+    const useFetch = () => {
+        fetch("/api/sausage-stands")
+            .then((res) => res.json())
+            .then((arr) => setStands(arr.stands))
+    }
+
+    useEffect(() => {
+        useFetch();
+    }, [coords]);
 
     return (
     <>
@@ -36,6 +45,8 @@ const Home = ({ stands }) => {
   );
 };
 
+/**
+ * Deprecated
 export const getStaticProps = async (context) => {
   const req = await fetch(`${process.env.HOST}/api/sausage-stands`);
   const res = await req.json();
@@ -46,5 +57,6 @@ export const getStaticProps = async (context) => {
     },
   };
 };
+*/
 
 export default Home;
