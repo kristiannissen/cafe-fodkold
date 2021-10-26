@@ -6,23 +6,23 @@ import Head from "next/head";
 import Link from "next/link";
 import Toolbar from "./components/toolbar";
 import styles from "../styles/List.module.css";
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 
 const Home = () => {
-    const [coords, setCoords] = useState({lat: "", lng: ""});
-    const [stands, setStands] = useState([]);
+  const [coords, setCoords] = useState({ lat: "", lng: "" });
+  const [stands, setStands] = useState([]);
 
-    const useFetch = () => {
-        fetch("/api/sausage-stands")
-            .then((res) => res.json())
-            .then((arr) => setStands(arr.stands))
-    }
+  const useFetch = () => {
+    fetch("/api/sausage-stands")
+      .then((res) => res.json())
+      .then((arr) => setStands(arr.stands));
+  };
 
-    useEffect(() => {
-        useFetch();
-    }, [coords]);
+  useEffect(() => {
+    useFetch();
+  }, [coords]);
 
-    return (
+  return (
     <>
       <Head>
         <title>Cafe Fodkold</title>

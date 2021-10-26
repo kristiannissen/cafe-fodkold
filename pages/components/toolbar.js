@@ -7,7 +7,7 @@ const Toolbar = (props) => {
   const getUserLocation = () => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((p) => {
-        props.setCoords({lat: p.coords.latitude, lng: p.coords.longitude});
+        props.setCoords({ lat: p.coords.latitude, lng: p.coords.longitude });
       });
     }
   };
