@@ -4,16 +4,23 @@
   height: 64px;
   align-items: center;
     background-color: var(--color_800);
+  display: flex;
+  align-items: center;
 }
-.header span {
+.header_icon {
+  width: 64px;
+  text-align: center;
+}
+.header .header_icon span {
     cursor: pointer;
 }
+.header_title {}
 .row {
   display: grid;
-  grid-template-columns: [first] 10% [line2] 90% [end];
-  width: calc(100vw - 32px);
+  grid-template-columns: [first] 64px [line2] auto [end];
   grid-template-rows: 64px;
   margin: 0 16px;
+  align-items: center;
 }
 .row .column:first-of-type {
 }
