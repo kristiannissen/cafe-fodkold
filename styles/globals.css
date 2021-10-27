@@ -19,6 +19,7 @@ body {
   margin: 0 auto;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 16px;
 }
 
 a {
@@ -36,8 +37,8 @@ h1 {
   padding: 0;
 }
 .icon {
-  width: 24px;
-  height: 24px;
+  width: 64px;
+  height: 64px;
   display: inline-block;
 }
 .place {
@@ -55,4 +56,8 @@ h1 {
 .arrow {
   background-image: url("/assets/svg/arrow_back_black_24dp.svg");
   background-repeat: no-repeat;
+}
+.directions_walk {
+    background-image: url("/assets/svg/directions_walk_black_24dp.svg");
+    background-repeat: no-repeat;
 }

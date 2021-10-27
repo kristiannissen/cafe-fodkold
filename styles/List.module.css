@@ -4,7 +4,7 @@
 }
 .list_item {
   display: flex;
-  height: 64px;
+  height: 72px;
   border-bottom: 1px solid #bfbfbf;
   padding: 16px;
   align-items: center;
@@ -21,7 +21,8 @@
 .list_item__title .icon {
 }
 .list_item__content {
-  
+    align-items: center;
+    display: flex;
 }
 @media only screen and (min-width: 320px) {
   .list_item {
