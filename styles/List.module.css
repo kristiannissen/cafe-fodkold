@@ -17,6 +17,7 @@
 .list_item__title {
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 .list_item__title .icon {
 }
