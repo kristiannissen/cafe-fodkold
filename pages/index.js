@@ -38,7 +38,7 @@ const Home = () => {
       <main>
         <div className={styles.list}>
           {stands.map((stand) => (
-            <div className={styles.list_item} key={stand.uid}>
+            <div className={styles.list_item} key={stand.uid} data-key={stand.uid}>
               <div className={styles.list_item__title}>
                 <i className="icon place"></i>
                 <Link href={`/stand/${stand.uid}`}>

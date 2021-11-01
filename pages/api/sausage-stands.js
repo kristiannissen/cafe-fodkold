@@ -8,14 +8,14 @@ export default function handler(req, res) {
     stands: [
       {
         name: "Pølsebaren",
-        uid: 3,
+        uid: 0,
         address: "Gladsaxe Møllevej 27, 2860 Søborg",
         phone: "+4538114618",
         latitude: "55.735653",
         longitude: "12.475422",
       }, {
         name: "Harry's Place",
-        uid: 4,
+        uid: 0,
         address: "Nordre Fasanvej 269, 2200 København",
         phone: "+4538114618",
         latitude: "55.6999064",
