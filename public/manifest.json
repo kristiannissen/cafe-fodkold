@@ -1,0 +1,16 @@
+{
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/",
+    "name": "Cafe Fodkold",
+    "short_name": "Cafe Fodkold",
+    "icons": [
+        {
+            "src": "/assets/svg/map_black_24dp.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#292929",
+    "background_color": "#292929"
+}
