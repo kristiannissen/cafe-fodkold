@@ -25,5 +25,5 @@ addEventListener("message", (event) => {
         stands[i].uid = uuidv1();
     }
     // Pass the sorted stands back
-    postMessage(stands)
+    postMessage(stands.sort((a, b) => a.distance - b.distance))
 })
