@@ -13,6 +13,13 @@ export default function handler(req, res) {
         phone: "+4538114618",
         latitude: "55.735653",
         longitude: "12.475422",
+      }, {
+        name: "Harry's Place",
+        uid: 4,
+        address: "Nordre Fasanvej 269, 2200 København",
+        phone: "+4538114618",
+        latitude: "55.6999064",
+        longitude: "12.5343379",
       },
     ],
   });

@@ -4,22 +4,29 @@
  */
 import Head from "next/head";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Toolbar from "./components/toolbar";
 import styles from "../styles/List.module.css";
 
 const Home = () => {
-  const [coords, setCoords] = useState({ lat: "", lng: "" });
+  const [coords, setCoords] = useState({ lat: "55.6711872", lng: "12.4533982" });
   const [stands, setStands] = useState([]);
+    const workerRef = useRef()
 
   const doFetch = () => {
     fetch("/api/sausage-stands")
       .then((res) => res.json())
-      .then((arr) => setStands(arr.stands));
+      .then((arr) => workerRef.current.postMessage({stands: arr.stands, coords}));
   };
 
   useEffect(() => {
     doFetch();
+      // Push stands to worker for sorting
+      workerRef.current = new Worker(new URL("../worker.js", import.meta.url))
+      workerRef.current.onmessage = (event) => setStands(event.data)
+      return () => {
+        workerRef.current.terminate()
+      }
 
   }, [coords]);
 
