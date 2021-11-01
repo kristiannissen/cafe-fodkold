@@ -39,7 +39,8 @@ const Home = () => {
                 </Link>
               </div>
               <div className={styles.list_item__content}>
-                <i className="icon directions_walk"></i>5 km away
+                <i className="icon directions_walk"></i>
+                <span className="body_small">5 km away</span>
               </div>
             </div>
           ))}
