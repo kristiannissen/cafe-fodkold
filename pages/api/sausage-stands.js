@@ -13,21 +13,23 @@ export default function handler(req, res) {
         phone: "+4538114618",
         latitude: "55.735653",
         longitude: "12.475422",
-      }, {
+      },
+      {
         name: "Harry's Place",
         uid: 0,
         address: "Nordre Fasanvej 269, 2200 København",
         phone: "+4538114618",
         latitude: "55.6999064",
         longitude: "12.5343379",
-      }, {
-	        name: "BØRNENES KONTORs",
-	        uid: 0,
-	        address: "Kannikegade 1A, 8000 Aarhus",
-	        phone: "",
-	        latitude: "56.1562263",
-	        longitude: "10.2098647",
-	      }
+      },
+      {
+        name: "BØRNENES KONTORs",
+        uid: 0,
+        address: "Kannikegade 1A, 8000 Aarhus",
+        phone: "",
+        latitude: "56.1562263",
+        longitude: "10.2098647",
+      },
     ],
   });
 }

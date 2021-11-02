@@ -9,25 +9,29 @@ import Toolbar from "./components/toolbar";
 import styles from "../styles/List.module.css";
 
 const Home = () => {
-  const [coords, setCoords] = useState({ lat: "55.6711872", lng: "12.4533982" });
+  const [coords, setCoords] = useState({
+    lat: "55.6711872",
+    lng: "12.4533982",
+  });
   const [stands, setStands] = useState([]);
-    const workerRef = useRef()
+  const workerRef = useRef();
 
   const doFetch = () => {
     fetch("/api/sausage-stands")
       .then((res) => res.json())
-      .then((arr) => workerRef.current.postMessage({stands: arr.stands, coords}));
+      .then((arr) =>
+        workerRef.current.postMessage({ stands: arr.stands, coords })
+      );
   };
 
   useEffect(() => {
     doFetch();
-      // Push stands to worker for sorting
-      workerRef.current = new Worker(new URL("../worker.js", import.meta.url))
-      workerRef.current.onmessage = (event) => setStands(event.data)
-      return () => {
-        workerRef.current.terminate()
-      }
-
+    // Push stands to worker for sorting
+    workerRef.current = new Worker(new URL("../worker.js", import.meta.url));
+    workerRef.current.onmessage = (event) => setStands(event.data);
+    return () => {
+      workerRef.current.terminate();
+    };
   }, [coords]);
 
   return (
@@ -38,7 +42,11 @@ const Home = () => {
       <main>
         <div className={styles.list}>
           {stands.map((stand) => (
-            <div className={styles.list_item} key={stand.uid} data-key={stand.uid}>
+            <div
+              className={styles.list_item}
+              key={stand.uid}
+              data-key={stand.uid}
+            >
               <div className={styles.list_item__title}>
                 <i className="icon place"></i>
                 <Link href={`/stand/${stand.uid}`}>

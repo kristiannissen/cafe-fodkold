@@ -29,8 +29,8 @@ const Stand = () => {
       <main>
         <div className={styles.row}>
           <div className={styles.column}>
-                <i className="icon place"></i>
-            </div>
+            <i className="icon place"></i>
+          </div>
           <div className={styles.column}>Gladsaxe Møllevej 27, 2860 Søborg</div>
         </div>
         <div className={styles.row}>
