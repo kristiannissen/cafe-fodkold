@@ -4,7 +4,6 @@
 }
 .list_item {
   display: flex;
-  height: 72px;
   border-bottom: 1px solid #bfbfbf;
   padding: 16px;
   align-items: center;
@@ -28,5 +27,9 @@
 @media only screen and (min-width: 320px) {
   .list_item {
     justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .list_item__title {
+    width: 100vw;
   }
 }

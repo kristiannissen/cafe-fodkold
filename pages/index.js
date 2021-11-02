@@ -49,13 +49,11 @@ const Home = () => {
             >
               <div className={styles.list_item__title}>
                 <i className="icon place"></i>
-                <Link href={`/stand/${stand.uid}`}>
-                  <h1>{stand.name}</h1>
-                </Link>
+                <span>{stand.name}</span>
               </div>
               <div className={styles.list_item__content}>
                 <i className="icon directions_walk"></i>
-                <span className="body_small">{stand.distance} km away</span>
+                <span>{stand.distance} km away</span>
               </div>
             </div>
           ))}
