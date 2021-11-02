@@ -20,7 +20,14 @@ export default function handler(req, res) {
         phone: "+4538114618",
         latitude: "55.6999064",
         longitude: "12.5343379",
-      },
+      }, {
+	        name: "BØRNENES KONTORs",
+	        uid: 0,
+	        address: "Kannikegade 1A, 8000 Aarhus",
+	        phone: "",
+	        latitude: "56.1562263",
+	        longitude: "10.2098647",
+	      }
     ],
   });
 }
