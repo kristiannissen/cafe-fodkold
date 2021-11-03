@@ -141,7 +141,7 @@ export default function handler(req, res) {
         phone: "",
         latitude: "56.145869",
         longitude: "10.192545",
-      }
+      },
     ],
   });
 }

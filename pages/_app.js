@@ -1,6 +1,8 @@
 /**
  *
  * @file _app.js
+ *
+ * Maintains global state and injects global CSS
  */
 import Head from "next/head";
 
