@@ -2,8 +2,10 @@
  *
  * @file pages/components/dialog.js
  */
+import {ReactDOM} from "react-dom";
+
 const Dialog = (props) => {
-  return <div>Crazy ass Dialog</div>;
+  return ReactDOM.createPorcal(<div>Crazy ass Dialog</div>);
 };
 
 export default Dialog;
