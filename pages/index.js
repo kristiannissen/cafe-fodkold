@@ -6,6 +6,8 @@ import Head from "next/head";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import Toolbar from "./components/toolbar";
+import Dialog from "./components/dialog";
+
 import styles from "../styles/List.module.css";
 
 const Home = () => {
@@ -59,6 +61,7 @@ const Home = () => {
           ))}
         </div>
         <Toolbar setCoords={setCoords} />
+      <Dialog />
       </main>
     </>
   );
