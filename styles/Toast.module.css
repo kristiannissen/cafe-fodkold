@@ -1,0 +1,14 @@
+/* Toast CSS */
+.toast {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  z-index: 999;
+  background-color: var(--color_600);
+  display: flex;
+  justify-content: center;
+}
+.toast__text {
+  padding: 16px 32px;
+  color: var(--color_50);
+}

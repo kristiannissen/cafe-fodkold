@@ -12,6 +12,7 @@ const MyDoc = () => {
         <Main />
         <NextScript />
         <div id="dialog-mount" />
+        <div id="toast-mount" />
       </body>
     </Html>
   );
