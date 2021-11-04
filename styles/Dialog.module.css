@@ -1,0 +1,27 @@
+/* Dialog CSS */
+.dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 999;
+  background-color: var(--color_600);
+}
+.dialog__container {
+  color: var(--color_50);
+  margin: 16px;
+}
+.dialog__container__title {
+  font-weight: 700;
+  display: flex;
+}
+.dialog__container__title span:first-of-type {
+  flex-grow: 2; 
+}
+.dialog__container__title span:last-of-type {
+  
+}
+.dialog__container__content {
+  margin: 16px 0; 
+}

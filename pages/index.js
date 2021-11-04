@@ -17,6 +17,7 @@ const Home = () => {
   });
   const [stands, setStands] = useState([]);
   const workerRef = useRef();
+  const [showDialog, setShowDialog] = useState(false)
 
   const doFetch = () => {
     fetch("/api/sausage-stands")
@@ -25,7 +26,7 @@ const Home = () => {
         workerRef.current.postMessage({ stands: arr.stands, coords })
       );
   };
-
+  // TODO: Add worker to find single stand
   useEffect(() => {
     doFetch();
     // Push stands to worker for sorting
@@ -48,6 +49,7 @@ const Home = () => {
               className={styles.list_item}
               key={stand.uid}
               data-key={stand.uid}
+              onClick={() => setShowDialog(true)}
             >
               <div className={styles.list_item__title}>
                 <i className="icon place"></i>
@@ -61,7 +63,7 @@ const Home = () => {
           ))}
         </div>
         <Toolbar setCoords={setCoords} />
-      <Dialog />
+      <Dialog show={showDialog} onHide={() => setShowDialog(false)} />
       </main>
     </>
   );
