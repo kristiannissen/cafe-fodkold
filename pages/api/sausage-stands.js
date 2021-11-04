@@ -142,6 +142,14 @@ export default function handler(req, res) {
         latitude: "56.145869",
         longitude: "10.192545",
       },
+      {
+        name: "Harry's Place",
+        uid: 0,
+        address: "Fragtvej 9, 2450 København",
+        phone: "",
+        latitude: "55.641705",
+        longitude: "12.536035",
+      },
     ],
   });
 }

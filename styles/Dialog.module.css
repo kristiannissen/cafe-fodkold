@@ -19,13 +19,11 @@
 .dialog__container__title span:first-of-type {
 }
 .dialog__container__title span:last-of-type {
-  
 }
 .dialog__container__content {
-  margin: 16px 0; 
+  margin: 16px 0;
 }
 .table {
-  
 }
 .table__row {
   display: grid;

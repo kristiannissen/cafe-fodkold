@@ -17,7 +17,7 @@ const Home = () => {
   });
   const [stands, setStands] = useState([]);
   const workerRef = useRef();
-  const [showDialog, setShowDialog] = useState(false)
+  const [showDialog, setShowDialog] = useState(false);
 
   const doFetch = () => {
     fetch("/api/sausage-stands")
@@ -63,7 +63,7 @@ const Home = () => {
           ))}
         </div>
         <Toolbar setCoords={setCoords} />
-      <Dialog show={showDialog} onHide={() => setShowDialog(false)} />
+        <Dialog show={showDialog} onHide={() => setShowDialog(false)} />
       </main>
     </>
   );
