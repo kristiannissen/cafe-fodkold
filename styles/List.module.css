@@ -7,6 +7,7 @@
   border-bottom: 1px solid #bfbfbf;
   padding: 16px;
   align-items: center;
+  cursor: pointer;
 }
 .list_item:first-of-type {
 }
@@ -16,7 +17,6 @@
 .list_item__title {
   display: flex;
   align-items: center;
-  cursor: pointer;
 }
 .list_item__title .icon {
 }
