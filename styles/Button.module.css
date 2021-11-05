@@ -1,0 +1,16 @@
+.btn {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  border: none;
+  display: inline-block;
+  cursor: pointer;
+  vertical-align: middle;
+  background: 0 0;
+}
+.btn__primary {
+  border-radius: 50%;
+  background-color: var(--color_50);
+  width: 64px;
+  height: 64px;
+}

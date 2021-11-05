@@ -7,11 +7,9 @@ import { point } from "@turf/helpers";
 import { distance } from "@turf/turf";
 
 addEventListener("message", (event) => {
-  let stands = event.data.stands;
-  let from = point([
-    parseFloat(event.data.coords.lat),
-    parseFloat(event.data.coords.lng),
-  ]);
+  let { stands, coords } = event.data;
+
+  let from = point([coords.latitude, coords.longitude]);
 
   for (let i = 0; i < stands.length; i++) {
     // Add dynamic property for distance

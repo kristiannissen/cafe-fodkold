@@ -5,16 +5,16 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
-import Toolbar from "./components/toolbar";
 import Dialog from "./components/dialog";
 import Toast from "./components/toast";
+import Button from "./components/button";
 
 import styles from "../styles/List.module.css";
 
 const Home = () => {
   const [coords, setCoords] = useState({
-    lat: "55.6711872",
-    lng: "12.4533982",
+    latitude: "55.6711872",
+    longitude: "12.4533982",
   });
   const [stands, setStands] = useState([]);
   const workerRef = useRef();
@@ -23,11 +23,24 @@ const Home = () => {
   const [toastMessage, setToastMessage] = useState("");
 
   const doFetch = () => {
+    popToast("Loading data...");
+
     fetch("/api/sausage-stands")
       .then((res) => res.json())
       .then((arr) =>
         workerRef.current.postMessage({ stands: arr.stands, coords })
       );
+  };
+  // Util function
+  const popToast = (msg) => {
+    setToastMessage(msg);
+    setShowToast(true);
+  };
+  const getCoords = (coords) => {
+    setCoords({
+      longitude: coords.longitude,
+      latitude: coords.latitude,
+    });
   };
   // TODO: Add worker to find single stand
   useEffect(() => {
@@ -65,7 +78,7 @@ const Home = () => {
             </div>
           ))}
         </div>
-        <Toolbar setCoords={setCoords} />
+        <Button getCoords={getCoords} />
         <Dialog show={showDialog} onHide={() => setShowDialog(false)} />
         <Toast
           message={toastMessage}

@@ -21,7 +21,7 @@ const Toast = ({ show, message, onHide }) => {
 
   const content = show ? (
     <div className={styles.toast}>
-      <div className={styles.toast__text}>Bad ass toast</div>
+      <div className={styles.toast__text}>{message}</div>
     </div>
   ) : null;
 

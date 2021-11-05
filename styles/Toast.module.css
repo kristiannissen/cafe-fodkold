@@ -1,8 +1,8 @@
 /* Toast CSS */
 .toast {
   position: fixed;
-  bottom: 0;
-  left: 50%;
+  bottom: 8px;
+  left: 8px;
   z-index: 999;
   background-color: var(--color_600);
   display: flex;

@@ -11,6 +11,9 @@
   --color_100: #70efde;
   --color_50: #c8fff4;
 }
+html {
+  scroll-behavior: smooth;
+}
 html,
 body {
   padding: 0;
