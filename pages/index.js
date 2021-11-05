@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import Toolbar from "./components/toolbar";
 import Dialog from "./components/dialog";
+import Toast from "./components/toast";
 
 import styles from "../styles/List.module.css";
 
@@ -18,6 +19,8 @@ const Home = () => {
   const [stands, setStands] = useState([]);
   const workerRef = useRef();
   const [showDialog, setShowDialog] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
 
   const doFetch = () => {
     fetch("/api/sausage-stands")
@@ -64,6 +67,11 @@ const Home = () => {
         </div>
         <Toolbar setCoords={setCoords} />
         <Dialog show={showDialog} onHide={() => setShowDialog(false)} />
+        <Toast
+          message={toastMessage}
+          show={showToast}
+          onHide={() => setShowToast(false)}
+        />
       </main>
     </>
   );
