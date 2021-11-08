@@ -19,7 +19,7 @@ const Home = () => {
   const [stands, setStands] = useState([]);
   const workerRef = useRef();
   const [showDialog, setShowDialog] = useState(false);
-  const [showToast, setShowToast] = useState(true);
+  const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
 
   const doFetch = () => {
@@ -72,7 +72,7 @@ const Home = () => {
             </div>
             <div className={styles.list_item__content}>
               <i className="icon directions_walk"></i>
-              <span>{stand.distance} km away</span>
+              <span>{stand.distance} km</span>
             </div>
           </div>
         ))}

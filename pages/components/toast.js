@@ -14,7 +14,7 @@ const Toast = ({ show, message, onHide }) => {
     setIsBrowser(true);
     // Trigger hide
     const timer = setTimeout(() => {
-      // onHide();
+      onHide();
     }, 2000);
     return () => clearTimeout(timer);
   }, []);
