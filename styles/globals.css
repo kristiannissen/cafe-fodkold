@@ -1,15 +1,9 @@
 :root {
-  --color_dark: #292929;
-  --color_900: #015457;
-  --color_800: #027374;
-  --color_700: #038785;
-  --color_600: #049592;
-  --color_500: #06a299;
-  --color_400: #08b3a6;
-  --color_300: #0ac4b4;
-  --color_200: #0ddac5;
-  --color_100: #70efde;
-  --color_50: #c8fff4;
+  --mellow_apricot: #ffb86f;
+  --citrine: #e0ca3c;
+  --alloy_orange: #ba5c12;
+  --russian_violet: #3e2f5b;
+  --dark_purple: #261132;
 }
 html {
   scroll-behavior: smooth;
@@ -17,13 +11,64 @@ html {
 html,
 body {
   padding: 0;
-  background-color: var(--color_dark);
-  color: var(--color_50);
+  background-color: var(--citrine);
+  color: var(--russian_violet);
   margin: 0 auto;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 16px;
 }
+/* Menu */
+header {
+  height: 56px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  background-color: var(--dark_purple);
+  color: #fff;
+}
+header h1 {
+  margin-left: 56px;
+}
+aside {
+  position: absolute;
+  top: 56px;
+  transform: translate3d(-260px, 0, 0);
+  transition: 0.3s;
+}
+input[type="checkbox"] {
+  opacity: 0;
+  position: absolute;
+}
+label[for="swipe"] {
+  cursor: pointer;
+  color: #fff;
+  position: absolute;
+  top: 16px;
+  left: 16px;
+}
+nav {
+  display: flex;
+  width: 80vw;
+  height: 100vh;
+  padding: 8px 16px;
+  background-color: var(--dark_purple);
+}
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+nav ul li {
+  margin-bottom: 16px;
+}
+nav a {
+  color: #fff;
+}
+#swipe:checked ~ aside {
+  transform: translate3d(0, 0, 0);
+}
+/* Menu */
 @media screen and (min-width: 320px) {
   html {
     font-size: calc(16px + 6 * ((100vw - 320px) / 680));

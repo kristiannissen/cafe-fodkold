@@ -58,34 +58,32 @@ const Home = () => {
       <Head>
         <title>Cafe Fodkold</title>
       </Head>
-      <main>
-        <div className={styles.list}>
-          {stands.map((stand) => (
-            <div
-              className={styles.list_item}
-              key={stand.uid}
-              data-key={stand.uid}
-              onClick={() => setShowDialog(true)}
-            >
-              <div className={styles.list_item__title}>
-                <i className="icon place"></i>
-                <span>{stand.name}</span>
-              </div>
-              <div className={styles.list_item__content}>
-                <i className="icon directions_walk"></i>
-                <span>{stand.distance} km away</span>
-              </div>
+      <div className={styles.list}>
+        {stands.map((stand) => (
+          <div
+            className={styles.list_item}
+            key={stand.uid}
+            data-key={stand.uid}
+            onClick={() => setShowDialog(true)}
+          >
+            <div className={styles.list_item__title}>
+              <i className="icon place"></i>
+              <span>{stand.name}</span>
             </div>
-          ))}
-        </div>
-        <Button getCoords={getCoords} />
-        <Dialog show={showDialog} onHide={() => setShowDialog(false)} />
-        <Toast
-          message={toastMessage}
-          show={showToast}
-          onHide={() => setShowToast(false)}
-        />
-      </main>
+            <div className={styles.list_item__content}>
+              <i className="icon directions_walk"></i>
+              <span>{stand.distance} km away</span>
+            </div>
+          </div>
+        ))}
+      </div>
+      <Button getCoords={getCoords} />
+      <Dialog show={showDialog} onHide={() => setShowDialog(false)} />
+      <Toast
+        message={toastMessage}
+        show={showToast}
+        onHide={() => setShowToast(false)}
+      />
     </>
   );
 };
