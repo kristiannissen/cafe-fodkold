@@ -10,7 +10,7 @@
 }
 .btn__primary {
   border-radius: 50%;
-  background-color: var(--color_50);
+  background-color: var(--alloy_orange);
   width: 64px;
   height: 64px;
 }

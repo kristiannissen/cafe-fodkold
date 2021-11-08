@@ -19,7 +19,7 @@ const Home = () => {
   const [stands, setStands] = useState([]);
   const workerRef = useRef();
   const [showDialog, setShowDialog] = useState(false);
-  const [showToast, setShowToast] = useState(false);
+  const [showToast, setShowToast] = useState(true);
   const [toastMessage, setToastMessage] = useState("");
 
   const doFetch = () => {

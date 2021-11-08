@@ -6,10 +6,10 @@
   bottom: 0;
   right: 0;
   z-index: 999;
-  background-color: var(--color_600);
+  background-color: var(--russian_violet);
 }
 .dialog__container {
-  color: var(--color_50);
+  color: #fff;
   margin: 16px;
 }
 .dialog__container__title {

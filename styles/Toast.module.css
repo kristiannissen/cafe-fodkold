@@ -4,11 +4,11 @@
   bottom: 8px;
   left: 8px;
   z-index: 999;
-  background-color: var(--color_600);
+  background-color: var(--alloy_orange);
   display: flex;
   justify-content: center;
 }
 .toast__text {
   padding: 16px 32px;
-  color: var(--color_50);
+  color: #fff;
 }
