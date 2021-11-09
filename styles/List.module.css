@@ -18,6 +18,9 @@
   display: flex;
   align-items: center;
 }
+.list_item__title span {
+    font-weight: bolder;
+}
 .list_item__title .icon {
 }
 .list_item__content {
