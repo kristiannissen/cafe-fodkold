@@ -4,50 +4,51 @@
  */
 import Head from "next/head";
 import Link from "next/link";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useDebugValue } from "react";
 import Dialog from "./components/dialog";
 import Toast from "./components/toast";
 import Button from "./components/button";
+import { StandContext, StandState } from "../context/stand";
 
 import styles from "../styles/List.module.css";
 
 const Home = () => {
   const [coords, setCoords] = useState({
-    latitude: "55.6711872",
-    longitude: "12.4533982",
+    latitude: 55.670249,
+    longitude: 10.3333283,
   });
+  const [stand, setStand] = useState(StandState);
   const [stands, setStands] = useState([]);
   const workerRef = useRef();
   const [showDialog, setShowDialog] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
 
-  const doFetch = () => {
-    popToast("Loading data...");
-
-    fetch("/api/sausage-stands")
-      .then((res) => res.json())
-      .then((arr) =>
-        workerRef.current.postMessage({ stands: arr.stands, coords })
-      );
-  };
-  // Util function
-  const popToast = (msg) => {
-    setToastMessage(msg);
-    setShowToast(true);
-  };
   const getCoords = (coords) => {
+    // Update coords on click
     setCoords({
       longitude: coords.longitude,
       latitude: coords.latitude,
     });
   };
-  // TODO: Add worker to find single stand
+
+  const getStand = (e) => {
+    // Iterate over the array of stands and find the matching key
+    let s = stands.filter((item) => item.uid === e.currentTarget.dataset.uid);
+    setStand(s.shift());
+    setShowDialog(true);
+  };
+
   useEffect(() => {
-    doFetch();
-    // Push stands to worker for sorting
+    // Create a new worker ref
     workerRef.current = new Worker(new URL("../worker.js", import.meta.url));
-    workerRef.current.onmessage = (event) => setStands(event.data);
+    // Post coords to worker
+    workerRef.current.postMessage({ coords });
+    // Wait for worker to respond
+    workerRef.current.onmessage = (event) => {
+      // Update state
+      setStands(event.data.stands);
+    };
     return () => {
       workerRef.current.terminate();
     };
@@ -63,22 +64,23 @@ const Home = () => {
           <div
             className={styles.list_item}
             key={stand.uid}
-            data-key={stand.uid}
-            onClick={() => setShowDialog(true)}
+            data-uid={stand.uid}
+            onClick={getStand}
           >
             <div className={styles.list_item__title}>
-              <i className="icon place"></i>
               <span>{stand.name}</span>
             </div>
             <div className={styles.list_item__content}>
-              <i className="icon directions_walk"></i>
               <span>{stand.distance} km</span>
+              <span>{stand.address}</span>
             </div>
           </div>
         ))}
       </div>
       <Button getCoords={getCoords} />
-      <Dialog show={showDialog} onHide={() => setShowDialog(false)} />
+      <StandContext.Provider value={stand}>
+        <Dialog show={showDialog} onHide={() => setShowDialog(false)} />
+      </StandContext.Provider>
       <Toast
         message={toastMessage}
         show={showToast}

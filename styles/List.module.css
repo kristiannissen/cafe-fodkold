@@ -18,11 +18,20 @@
   display: flex;
   align-items: center;
 }
+.list_item__title span {
+  font-weight: bolder;
+}
 .list_item__title .icon {
 }
 .list_item__content {
   align-items: center;
   display: flex;
+}
+.list_item__content span {
+  margin-right: 8px;
+}
+.list_item__content span:last-of-type {
+  margin-right: 0;
 }
 @media only screen and (min-width: 320px) {
   .list_item {

@@ -7,21 +7,25 @@ import { point } from "@turf/helpers";
 import { distance } from "@turf/turf";
 
 addEventListener("message", (event) => {
-  let { stands, coords } = event.data;
-
+  let { coords } = event.data;
+  let message = "";
   let from = point([coords.latitude, coords.longitude]);
-
-  for (let i = 0; i < stands.length; i++) {
-    // Add dynamic property for distance
-    if (stands[i].hasOwnProperty("distance") === false) {
-      stands[i].distance = 0;
-    }
-    let to = point([stands[i].latitude, stands[i].longitude]);
-    // Calculate distance
-    stands[i].distance = Math.ceil(distance(from, to));
-    // Add unique key
-    stands[i].uid = uuidv1();
-  }
-  // Pass the sorted stands back
-  postMessage(stands.sort((a, b) => a.distance - b.distance));
+  // Fetch stands
+  fetch("/api/sausage-stands")
+    .then((res) => res.json())
+    .then((arr) => {
+      let stands = arr.stands;
+      for (let i = 0; i < stands.length; i++) {
+        let to = point([stands[i].latitude, stands[i].longitude]);
+        stands[i].distance = Math.ceil(distance(from, to));
+        stands[i].uid = Math.random(
+          new Date().getTime() * Math.random(42)
+        ).toString();
+      }
+      // Send stands back to main thread
+      postMessage({
+        stands: stands.sort((a, b) => a.distance - b.distance).slice(0, 10),
+        message,
+      });
+    });
 });
