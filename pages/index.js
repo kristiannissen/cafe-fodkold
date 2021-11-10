@@ -23,8 +23,6 @@ const Home = () => {
   const [toastMessage, setToastMessage] = useState("");
 
   const doFetch = () => {
-    popToast("Loading data...");
-
     fetch("/api/sausage-stands")
       .then((res) => res.json())
       .then((arr) =>
