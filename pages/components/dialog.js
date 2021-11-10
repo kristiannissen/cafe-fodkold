@@ -12,7 +12,6 @@ import styles from "../../styles/Dialog.module.css";
 const Dialog = (props) => {
   const [isBrowser, setIsBrowser] = useState(false);
   const stand = useContext(StandContext);
-  console.log(stand);
 
   useEffect(() => {
     setIsBrowser(true);
@@ -31,8 +30,10 @@ const Dialog = (props) => {
           <div className={styles.map}></div>
           <div className={styles.table}>
             <div className={styles.table__row}>
-              <div className={styles.table__cell}>Cell</div>
-              <div className={styles.table__cell}>Cell</div>
+              <div className={styles.table__cell}>
+                <i className="icon place"></i>
+              </div>
+              <div className={styles.table__cell}>{stand.address}</div>
             </div>
             <div className={styles.table__row}>
               <div className={styles.table__cell}>Cell</div>

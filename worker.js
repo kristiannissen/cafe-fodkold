@@ -18,7 +18,9 @@ addEventListener("message", (event) => {
       for (let i = 0; i < stands.length; i++) {
         let to = point([stands[i].latitude, stands[i].longitude]);
         stands[i].distance = Math.ceil(distance(from, to));
-        stands[i].uid = uuidv1();
+        stands[i].uid = Math.random(
+          new Date().getTime() * Math.random(42)
+        ).toString();
       }
       // Send stands back to main thread
       postMessage({

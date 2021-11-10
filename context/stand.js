@@ -6,5 +6,5 @@
 import {createContext} from "react";
 
 // TODO: Add properties
-export const initialState = {name: ""}
-export const StandContext = createContext(initialState)
+export const StandState = {name: "", uid: "", address: "", longitude: 0, latitude: 0, distance: 0}
+export const StandContext = createContext(StandState)

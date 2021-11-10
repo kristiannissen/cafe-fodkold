@@ -8,16 +8,16 @@ import { useState, useEffect, useRef, useDebugValue } from "react";
 import Dialog from "./components/dialog";
 import Toast from "./components/toast";
 import Button from "./components/button";
-import { StandContext } from "../context/stand";
+import { StandContext, StandState } from "../context/stand";
 
 import styles from "../styles/List.module.css";
 
 const Home = () => {
   const [coords, setCoords] = useState({
-    latitude: 55.6711872,
-    longitude: 12.4533982,
+    latitude: 55.670249,
+    longitude: 10.3333283,
   });
-  const [stand, setStand] = useState({ name: "hello doush" });
+  const [stand, setStand] = useState(StandState);
   const [stands, setStands] = useState([]);
   const workerRef = useRef();
   const [showDialog, setShowDialog] = useState(false);
@@ -31,6 +31,14 @@ const Home = () => {
       latitude: coords.latitude,
     });
   };
+
+  const getStand = (e) => {
+    // Iterate over the array of stands and find the matching key
+    let s = stands.filter((item) => item.uid === e.currentTarget.dataset.uid);
+    setStand(s.shift());
+    setShowDialog(true);
+  };
+
   useEffect(() => {
     // Create a new worker ref
     workerRef.current = new Worker(new URL("../worker.js", import.meta.url));
@@ -56,14 +64,14 @@ const Home = () => {
           <div
             className={styles.list_item}
             key={stand.uid}
-            data-key={stand.uid}
-            onClick={() => setShowDialog(true)}
+            data-uid={stand.uid}
+            onClick={getStand}
           >
             <div className={styles.list_item__title}>
               <span>{stand.name}</span>
             </div>
             <div className={styles.list_item__content}>
-              <span>{stand.distance}</span>
+              <span>{stand.distance} km</span>
               <span>{stand.address}</span>
             </div>
           </div>
