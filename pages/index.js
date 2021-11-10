@@ -4,7 +4,7 @@
  */
 import Head from "next/head";
 import Link from "next/link";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useDebugValue } from "react";
 import Dialog from "./components/dialog";
 import Toast from "./components/toast";
 import Button from "./components/button";
@@ -13,8 +13,8 @@ import styles from "../styles/List.module.css";
 
 const Home = () => {
   const [coords, setCoords] = useState({
-    latitude: "55.6711872",
-    longitude: "12.4533982",
+    latitude: 55.6711872,
+    longitude: 12.4533982,
   });
   const [stands, setStands] = useState([]);
   const workerRef = useRef();
@@ -25,9 +25,7 @@ const Home = () => {
   const doFetch = () => {
     fetch("/api/sausage-stands")
       .then((res) => res.json())
-      .then((arr) =>
-        workerRef.current.postMessage({ stands: arr.stands, coords })
-      );
+      .then((arr) => workerRef.current.postMessage({ coords }));
   };
   // Util function
   const popToast = (msg) => {
@@ -35,6 +33,7 @@ const Home = () => {
     setShowToast(true);
   };
   const getCoords = (coords) => {
+    // Update coords on click
     setCoords({
       longitude: coords.longitude,
       latitude: coords.latitude,
@@ -42,10 +41,16 @@ const Home = () => {
   };
   // TODO: Add worker to find single stand
   useEffect(() => {
-    doFetch();
-    // Push stands to worker for sorting
+    console.log("effect", coords);
+    // Create a new worker ref
     workerRef.current = new Worker(new URL("../worker.js", import.meta.url));
-    workerRef.current.onmessage = (event) => setStands(event.data);
+    // Post coords to worker
+    workerRef.current.postMessage({ coords });
+    // Wait for worker to respond
+    workerRef.current.onmessage = (event) => {
+      // Update state
+      setStands(event.data.stands);
+    };
     return () => {
       workerRef.current.terminate();
     };
