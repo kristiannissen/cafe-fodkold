@@ -12,7 +12,9 @@ const Toast = ({ show, message, onHide }) => {
 
   useEffect(() => {
     setIsBrowser(true);
-  }, []);
+    let timer = setTimeout(() => onHide(), 2000);
+    return () => clearTimeout(timer);
+  }, [show]);
 
   const content = show ? (
     <div className={styles.toast}>

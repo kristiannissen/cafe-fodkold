@@ -39,7 +39,13 @@ const Home = () => {
     setShowDialog(true);
   };
 
+  const popToast = (msg) => {
+    setToastMessage(msg);
+    setShowToast(true);
+  };
+
   useEffect(() => {
+    popToast("Loading...");
     // Create a new worker ref
     workerRef.current = new Worker(new URL("../worker.js", import.meta.url));
     // Post coords to worker

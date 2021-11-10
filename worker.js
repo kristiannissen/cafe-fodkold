@@ -24,7 +24,7 @@ addEventListener("message", (event) => {
       }
       // Send stands back to main thread
       postMessage({
-        stands: stands.sort((a, b) => a.distance - b.distance).slice(0, 10),
+        stands: stands.sort((a, b) => a.distance - b.distance),
         message,
       });
     });
