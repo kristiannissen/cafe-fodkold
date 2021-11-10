@@ -12,11 +12,6 @@ const Toast = ({ show, message, onHide }) => {
 
   useEffect(() => {
     setIsBrowser(true);
-    // FIXME: Trigger hide
-    const timer = setTimeout(() => {
-      onHide();
-    }, 2000);
-    return () => clearTimeout(timer);
   }, []);
 
   const content = show ? (

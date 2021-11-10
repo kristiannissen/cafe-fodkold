@@ -22,16 +22,6 @@ const Home = () => {
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
 
-  const doFetch = () => {
-    fetch("/api/sausage-stands")
-      .then((res) => res.json())
-      .then((arr) => workerRef.current.postMessage({ coords }));
-  };
-  // Util function
-  const popToast = (msg) => {
-    setToastMessage(msg);
-    setShowToast(true);
-  };
   const getCoords = (coords) => {
     // Update coords on click
     setCoords({
@@ -39,9 +29,7 @@ const Home = () => {
       latitude: coords.latitude,
     });
   };
-  // TODO: Add worker to find single stand
   useEffect(() => {
-    console.log("effect", coords);
     // Create a new worker ref
     workerRef.current = new Worker(new URL("../worker.js", import.meta.url));
     // Post coords to worker
@@ -70,12 +58,11 @@ const Home = () => {
             onClick={() => setShowDialog(true)}
           >
             <div className={styles.list_item__title}>
-              <i className="icon place"></i>
               <span>{stand.name}</span>
             </div>
             <div className={styles.list_item__content}>
-              <i className="icon directions_walk"></i>
-              <span>{stand.distance} km</span>
+              <span>{stand.distance}</span>
+              <span>{stand.address}</span>
             </div>
           </div>
         ))}
