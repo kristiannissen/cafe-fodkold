@@ -3,12 +3,16 @@
  * @file pages/components/dialog.js
  */
 import ReactDOM from "react-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import Image from "next/image";
 
+import { StandContext } from "../../context/stand";
 import styles from "../../styles/Dialog.module.css";
 
 const Dialog = (props) => {
   const [isBrowser, setIsBrowser] = useState(false);
+  const stand = useContext(StandContext);
+  console.log(stand);
 
   useEffect(() => {
     setIsBrowser(true);
@@ -21,9 +25,10 @@ const Dialog = (props) => {
           <span onClick={() => props.onHide()}>
             <i className="icon arrow"></i>
           </span>
-          <span>Børnenes Kontors pøsevogn</span>
+          <span>{stand.name}</span>
         </div>
         <div className={styles.dialog__container__content}>
+          <div className={styles.map}></div>
           <div className={styles.table}>
             <div className={styles.table__row}>
               <div className={styles.table__cell}>Cell</div>

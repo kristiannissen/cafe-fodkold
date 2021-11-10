@@ -8,6 +8,7 @@ import { useState, useEffect, useRef, useDebugValue } from "react";
 import Dialog from "./components/dialog";
 import Toast from "./components/toast";
 import Button from "./components/button";
+import { StandContext } from "../context/stand";
 
 import styles from "../styles/List.module.css";
 
@@ -16,6 +17,7 @@ const Home = () => {
     latitude: 55.6711872,
     longitude: 12.4533982,
   });
+  const [stand, setStand] = useState({ name: "hello doush" });
   const [stands, setStands] = useState([]);
   const workerRef = useRef();
   const [showDialog, setShowDialog] = useState(false);
@@ -68,7 +70,9 @@ const Home = () => {
         ))}
       </div>
       <Button getCoords={getCoords} />
-      <Dialog show={showDialog} onHide={() => setShowDialog(false)} />
+      <StandContext.Provider value={stand}>
+        <Dialog show={showDialog} onHide={() => setShowDialog(false)} />
+      </StandContext.Provider>
       <Toast
         message={toastMessage}
         show={showToast}
