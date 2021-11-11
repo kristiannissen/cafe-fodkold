@@ -7,7 +7,7 @@ import useCurrentPosition from "../../hooks/usecurrentposition";
 import styles from "../../styles/Button.module.css";
 
 const Button = ({ clickHandler }) => {
-  const [position, error, getPosition] = useCurrentPosition();
+  const [position, error, getPosition] = useCurrentPosition(false);
 
   let css = [styles.btn, styles.btn__primary].join(" ");
 

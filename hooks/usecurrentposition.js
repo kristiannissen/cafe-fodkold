@@ -4,13 +4,12 @@
  */
 import { useState, useEffect, useRef } from "react";
 
-const useCurrentPosition = () => {
+const useCurrentPosition = (permission) => {
   const [position, setPosition] = useState({});
   const [error, setError] = useState({ code: 0, message: "" });
 
-  const handleSuccess = (position) => {
-    // console.log(position)
-    setPosition(position);
+  const handleSuccess = (pos) => {
+    setPosition(pos);
   };
 
   const handleError = (error) => {
@@ -24,8 +23,9 @@ const useCurrentPosition = () => {
   };
 
   useEffect(() => {
-    // getPosition().then(handleSuccess)
-    // .catch(handleError)
+    if (permission) {
+      getPosition().then(handleSuccess).catch(handleError);
+    }
   }, []);
 
   return [position, error, getPosition];
