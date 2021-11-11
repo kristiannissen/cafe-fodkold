@@ -7,7 +7,8 @@ import useCurrentPosition from "../../hooks/usecurrentposition";
 import styles from "../../styles/Button.module.css";
 
 const Button = ({ clickHandler }) => {
-  const [position, error] = useCurrentPosition();
+  const [permission, setPermission] = useState(false);
+  const [position, error] = useCurrentPosition({ permission });
 
   let css = [styles.btn, styles.btn__primary].join(" ");
 
@@ -15,9 +16,9 @@ const Button = ({ clickHandler }) => {
     <button
       className={css}
       onClick={(e) => {
+        setPermission(true);
         // Merge position and error object
-        console.log(e, error, position);
-        // clickHandler(Object.assign(position, error));
+        console.log(position, error);
       }}
     >
       <i className="icon my_location"></i>

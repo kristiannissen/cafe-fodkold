@@ -2,12 +2,12 @@
  *
  * @file hooks/usecurrentposition.js
  */
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
-const useCurrentPosition = (props) => {
+const useCurrentPosition = ({ permission }) => {
   const [position, setPosition] = useState({});
   const [error, setError] = useState({ code: 0, message: "" });
-  const [cancel, setCancel] = useState(false);
+  const isMounted = useRef(false);
 
   const handleSuccess = (position) => {
     setPosition(position);
@@ -25,18 +25,23 @@ const useCurrentPosition = (props) => {
   };
 
   useEffect(() => {
-    // Check for support
-    if (cancel !== true) {
+    if (permission) {
       if ("geolocation" in navigator) {
         getPosition()
-          .then((p) => setPosition(p))
-          .catch((err) => setError(err));
-      } else {
-        setError({ message: "Not supported" });
+          .then((pos) => {
+            console.log(pos);
+            setPosition(pos);
+          })
+          .catch((error) => setError(error));
       }
     }
-    return () => setCancel(true);
-  }, [props]);
+  }, [permission]);
+
+  useEffect(() => {
+    if (isMounted.current === false) {
+      isMounted.current = true;
+    }
+  }, []);
 
   return [position.coords, error];
 };
