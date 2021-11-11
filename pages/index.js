@@ -9,28 +9,24 @@ import Dialog from "./components/dialog";
 import Toast from "./components/toast";
 import Button from "./components/button";
 import { StandContext, StandState } from "../context/stand";
-import useCurrentPosition from "../hooks/usecurrentposition";
+import { PositionContext, PositionState } from "../context/position";
 
 import styles from "../styles/List.module.css";
 
 const Home = () => {
-  const [coords, setCoords] = useState({
-    latitude: 55.670249,
-    longitude: 10.3333283,
-  });
+  const [position, setPosition] = useState(PositionState);
   const [stand, setStand] = useState(StandState);
   const [stands, setStands] = useState([]);
   const workerRef = useRef();
   const [showDialog, setShowDialog] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
-  const [position, error] = useCurrentPosition({});
 
-  const getCoords = (coords) => {
+  const getPosition = (position) => {
     // Update coords on click
-    setCoords({
-      longitude: coords.longitude,
-      latitude: coords.latitude,
+    setPosition({
+      longitude: position.longitude,
+      latitude: position.latitude,
     });
   };
 
@@ -40,7 +36,7 @@ const Home = () => {
     setStand(s.shift());
     setShowDialog(true);
   };
-
+  // TODO: Move to components/toast.js as a function
   const popToast = (msg) => {
     setToastMessage(msg);
     setShowToast(true);
@@ -48,14 +44,10 @@ const Home = () => {
 
   useEffect(() => {
     popToast("Loading...");
-    // Check error handling from current location
-    if (error.code !== 0) {
-      popToast("");
-    }
     // Create a new worker ref
     workerRef.current = new Worker(new URL("../worker.js", import.meta.url));
     // Post coords to worker
-    workerRef.current.postMessage({ coords });
+    workerRef.current.postMessage({ position });
     // Wait for worker to respond
     workerRef.current.onmessage = (event) => {
       // Update state
@@ -64,7 +56,7 @@ const Home = () => {
     return () => {
       workerRef.current.terminate();
     };
-  }, [coords]);
+  }, [position]);
 
   return (
     <>
@@ -89,7 +81,7 @@ const Home = () => {
           </div>
         ))}
       </div>
-      <Button getCoords={getCoords} />
+      <Button clickHandler={getPosition} />
       <StandContext.Provider value={stand}>
         <Dialog show={showDialog} onHide={() => setShowDialog(false)} />
       </StandContext.Provider>
