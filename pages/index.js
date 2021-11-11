@@ -9,6 +9,7 @@ import Dialog from "./components/dialog";
 import Toast from "./components/toast";
 import Button from "./components/button";
 import { StandContext, StandState } from "../context/stand";
+import useCurrentPosition from "../hooks/usecurrentposition";
 
 import styles from "../styles/List.module.css";
 
@@ -23,6 +24,7 @@ const Home = () => {
   const [showDialog, setShowDialog] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
+  const [position, error] = useCurrentPosition({});
 
   const getCoords = (coords) => {
     // Update coords on click
@@ -46,6 +48,10 @@ const Home = () => {
 
   useEffect(() => {
     popToast("Loading...");
+    // Check error handling from current location
+    if (error.code !== 0) {
+      popToast("");
+    }
     // Create a new worker ref
     workerRef.current = new Worker(new URL("../worker.js", import.meta.url));
     // Post coords to worker
