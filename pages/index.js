@@ -25,8 +25,8 @@ const Home = () => {
   const getPosition = (position) => {
     // Update coords on click
     setPosition({
-      longitude: position.longitude,
-      latitude: position.latitude,
+      longitude: position.coords.longitude,
+      latitude: position.coords.latitude,
     });
   };
 
