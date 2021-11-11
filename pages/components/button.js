@@ -16,7 +16,8 @@ const Button = ({ clickHandler }) => {
       className={css}
       onClick={(e) => {
         // Merge position and error object
-        clickHandler(Object.assign(position, error));
+        console.log(e, error, position);
+        // clickHandler(Object.assign(position, error));
       }}
     >
       <i className="icon my_location"></i>

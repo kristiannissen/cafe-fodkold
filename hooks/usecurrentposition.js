@@ -18,15 +18,19 @@ const useCurrentPosition = (props) => {
     setError(error);
   };
 
+  const getPosition = () => {
+    return new Promise((resolve, reject) =>
+      navigator.geolocation.getCurrentPosition(resolve, reject)
+    );
+  };
+
   useEffect(() => {
     // Check for support
     if (cancel !== true) {
       if ("geolocation" in navigator) {
-        navigator.geolocation.getCurrentPosition(
-          handleSuccess,
-          handleError,
-          {}
-        );
+        getPosition()
+          .then((p) => setPosition(p))
+          .catch((err) => setError(err));
       } else {
         setError({ message: "Not supported" });
       }

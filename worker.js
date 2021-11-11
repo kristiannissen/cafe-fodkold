@@ -7,7 +7,7 @@ import { point } from "@turf/helpers";
 import { distance } from "@turf/turf";
 
 addEventListener("message", (event) => {
-    let { position } = event.data;
+  let { position } = event.data;
   let message = "";
   let from = point([position.latitude, position.longitude]);
   // Fetch stands
